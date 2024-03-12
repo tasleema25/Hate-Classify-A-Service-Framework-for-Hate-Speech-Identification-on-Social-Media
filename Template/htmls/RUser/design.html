@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote User</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url("{% static 'white.jpg' %}");
+            background-size: cover;
+            font-family: 'Montserrat', sans-serif; /* Change font-family to Montserrat */
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #ff3333; /* Set heading color to a vibrant red */
+            text-align: center;
+            padding: 40px 0;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px; /* Add letter spacing for better readability */
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #812;
+            border-bottom: 2px solid #6b3861;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            display: flex; /* Align navigation items horizontally */
+            justify-content: center; /* Center navigation items horizontally */
+        }
+        .topnav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px 30px; /* Add padding around navigation items */
+            transition: background-color 0.3s ease;
+        }
+        .topnav a:hover {
+            background-color: #6b3861;
+        }
+        .topnav a.active {
+            background-color: #8e4fd1;
+        }
+        .mainholder {
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1>Hate Classify: A Service Framework for Hate Speech Identification on Social Media</h1>
+
+<div class="topnav">
+    <a href="{% url 'Predict_TweetClassify_Type' %}">PREDICT TWEET CLASSIFY TYPE</a>
+    <a href="{% url 'ViewYourProfile' %}">VIEW YOUR PROFILE</a>
+    <a href="{% url 'login' %}">LOGOUT</a>
+</div>
+
+<div class="mainholder">
+    {% block userblock %}
+    {% endblock %}
+</div>
+</body>
+</html>

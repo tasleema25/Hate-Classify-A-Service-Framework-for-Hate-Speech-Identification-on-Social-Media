@@ -1,0 +1,116 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+
+<style>
+    body {
+        background-color: #f2f2f2; /* Changed background color to a lighter shade */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif; /* Changed font family for better readability */
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 20px;
+    }
+
+    .menu table {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu table td:hover {
+        background: #333; /* Darkened background color on hover */
+        color: #fff; /* Changed text color on hover */
+    }
+
+    .menu table td {
+        background: #584b4f;
+        color: #ffffff;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        padding: 15px;
+    }
+
+    .topic h1 {
+        color: #ffffff;
+        padding: 20px; /* Increased padding for better spacing */
+        text-align: center;
+        border: none;
+        background-color: #333; /* Changed background color for topic */
+        margin-top: 0; /* Removed margin-top to stick to the top */
+    }
+
+    #chartContainer {
+        width: 100%; /* Adjusted width to fill the container */
+        height: 500px; /* Increased height of the chart */
+        margin: 20px 0; /* Added margin for spacing */
+        position: relative;
+    }
+
+    .sidemenu {
+        margin-top: 20px; /* Adjusted margin-top for better spacing */
+        text-align: center;
+    }
+
+    .sidemenu a {
+        color: #fff; /* Changed link color to white */
+        text-decoration: none;
+        background-color: #ff0000; /* Changed background color to red */
+        padding: 10px 20px; /* Added padding for better appearance */
+        border-radius: 5px; /* Added border radius for rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition on background color change */
+    }
+
+    .sidemenu a:hover {
+        background-color: #cc0000; /* Darkened background color on hover */
+    }
+
+</style>
+
+
+<script>
+    window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: ""
+            },
+            data: [{
+                {% if chart_type == "rangeSplineArea" %}
+                type: "rangeSplineArea",
+                {% elif chart_type == "pie" %}
+                type: "pie",
+                {% elif chart_type == "spline" %}
+                type: "spline",
+                {% endif %}
+                startAngle: 240,
+                yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} {y}",
+                dataPoints: [
+                    {% for o in form %}
+                    { y: {{o.dcount}}, label: "{{o.names}}" },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart.render();
+
+    }
+
+</script>
+<body>
+    <div class="container">
+
+        <div class="sidemenu">
+            <h3><a href="{% url 'likeschart' 'bar' %}">Bar Chart</a></h3>
+        </div>
+
+        <div id="chartContainer" class="graph"></div>
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+{% endblock %}

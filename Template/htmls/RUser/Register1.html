@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register Your Details</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        body {
+            background: url("{% static 'image.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Make the body full height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.); /* Adjust the alpha value for more transparency */
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            position: relative; /* Set container position to relative */
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif; /* Change to Montserrat font */
+            color: #FF0000;
+            text-align: center;
+            margin-bottom: 30px; /* Add margin bottom for spacing */
+            font-weight: bold; /* Make the heading bold */
+        }
+        hr {
+            border: 1px solid #FF0000;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #FF0000;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #CC0000;
+        }
+        .btn-secondary {
+            color: #FF0000; /* Change font color of the button */
+            background-color: transparent;
+            border: 1px solid #FF0000;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            color: #FFFFFF; /* Change font color on hover */
+            background-color: #FF0000;
+            border-color: #FF0000;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> <!-- Add Montserrat font -->
+</head>
+<body>
+<div class="container">
+    <h2>Register Your Details</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <form role="form" method="POST" >
+                {% csrf_token %}
+                <fieldset>
+                    <img src="{% static '/Register.jpg' %}" alt="Registration image" class="img-fluid mb-4">
+                    <div class="form-group">
+                        <label for="username">User Name:</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter User Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneno">Mobile Number:</label>
+                        <input type="tel" name="phoneno" id="phoneno" class="form-control" placeholder="Enter Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <input type="text" name="country" id="country" class="form-control" placeholder="Enter Country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" name="state" id="state" class="form-control" placeholder="Enter State" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" name="city" id="city" class="form-control" placeholder="Enter City" required>
+                    </div>
+                    <input type="submit" class="btn btn-lg btn-primary" name="submit" value="Sign Up" style="margin-right: 10px;"> <!-- Add margin-right to create a gap -->
+                    <button class="btn btn-lg btn-secondary"><a href="{% url 'login' %}">User Login</a></button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'white.jpg' %}") center top / cover no-repeat;
+            font-family: 'Roboto', sans-serif;
+            filter: brightness(1.2) contrast(1.2);
+            position: relative;
+        }
+        .container-fluid {
+            padding: 50px;
+        }
+        .container {
+            position: relative;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2); /* Soft shadow effect */
+            background-color: rgba(255, 255, 255, 0.1); /* White background with 80% opacity */
+        }
+        .style5 {
+            font-family: 'Montserrat', sans-serif; /* Changed font family */
+            color: rgb(241, 35, 35); /* Red color */
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px; /* Increased margin to push it further down */
+            margin-top: 50px; /* Added margin to the top */
+            font-size: 40px; /* Increased font size */
+        }
+        .login-text {
+            font-family: 'Montserrat', sans-serif; /* Changed font family */
+            font-size: 18px; /* Adjusted font size for the login text */
+            color: red; /* Red color */
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin bottom */
+        }
+        .background-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .background-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border: 1px solid black; /* Black border around the form control */
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: black; /* Black color for the text */
+            transition: background-color 0.3s ease;
+        }
+        .form-control:focus {
+            background-color: #f8f9fa; /* Light gray color for the form control background on focus */
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2); /* Soft shadow effect on focus */
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-container .btn {
+            margin-right: 10px;
+        }
+        .error-message {
+            color: #ff5a5f; /* Red color */
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .btn-primary {
+            background-color: red; /* Red color */
+            border-color: red; /* Red color */
+        }
+        .btn-primary:hover {
+            background-color: #ff3b3f; /* Darker red color on hover */
+            border-color: #ff3b3f; /* Darker red color on hover */
+        }
+        .btn-secondary {
+            background-color: #343a40; /* Dark gray color */
+            border-color: #343a40; /* Dark gray color */
+        }
+        .btn-secondary:hover {
+            background-color: #1d2124; /* Darker gray color on hover */
+            border-color: #1d2124; /* Darker gray color on hover */
+        }
+        label {
+            font-weight: bold; /* Make label names bold */
+        }
+    </style>
+</head>
+<body>
+    <h2 class="style5"><strong>Hate Classify: A Service Framework for Hate Speech Identification on Social Media</strong></h2>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form method="POST" role="form" id="login-form">
+                        {% csrf_token %}
+                        <div class="background-image">
+                            <img src="{% static '/login.jpg' %}" alt="Login image">
+                        </div>
+                        <p class="login-text">Login Using Your Account:</p>
+                        <div class="form-group">
+                            <label for="username">User Name:</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="User Name" required>
+                            <div class="error-message" id="username-error">{{ error_message }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                            <div class="error-message" id="password-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit1" class="btn btn-md btn-primary btn-block" value="Sign in">
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn btn-lg btn-secondary"><a href="{% url 'serviceproviderlogin' %}">SERVICE PROVIDER</a></button>
+                            <button class="btn btn-lg btn-secondary"><a href="{% url 'Register1' %}">REGISTER</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

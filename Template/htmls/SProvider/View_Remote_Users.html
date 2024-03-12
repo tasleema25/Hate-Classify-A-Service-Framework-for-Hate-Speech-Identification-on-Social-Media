@@ -1,0 +1,111 @@
+{% extends 'SProvider/design1.html' %}
+
+{% block researchblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Remote Users</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Monterosso', sans-serif; /* Changed font to Monterosso */
+            margin: 0;
+            padding: 0;
+        }
+        .container-fluid {
+            padding: 30px; /* Adjusted padding */
+        }
+        .container {
+            background-color: #FFFFFF;
+            padding: 30px; /* Adjusted padding */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        #title {
+            font-family: 'Monterosso', sans-serif;
+            color: #FF0000;
+            font-size: 30px; /* Adjusted font size */
+            text-align: center;
+            margin-bottom: 30px; /* Adjusted margin */
+        }
+        .text-uppercase {
+            font-family: 'Monterosso', cursive;
+            text-transform: uppercase;
+        }
+        input {
+            font-family: 'Monterosso', sans-serif; /* Changed font to Monterosso */
+            font-size: 30px;
+        }
+        .style1 {
+            color: #FF0000;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            border: 1px solid #FF0000;
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #FF0000;
+            color: #FFFF00;
+        }
+        tr:nth-child(even) {
+            background-color: #FFFFFF;
+        }
+        tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="title">VIEW ALL REMOTE USERS</h1>
+                    <div class="viewclients">
+                        <table>
+                            <tr>
+                                <th>USER NAME</th>
+                                <th>EMAIL</th>
+                                <th>MOBILE NUMBER</th>
+                                <th>COUNTRY</th>
+                                <th>STATE</th>
+                                <th>CITY</th>
+                            </tr>
+                            {% for o in objects %}
+                            <tr>
+                                <td><span class="style1">{{ o.username }}</span></td>
+                                <td><span class="style1">{{ o.email }}</span></td>
+                                <td><span class="style1">{{ o.phoneno }}</span></td>
+                                <td><span class="style1">{{ o.country }}</span></td>
+                                <td><span class="style1">{{ o.state }}</span></td>
+                                <td><span class="style1">{{ o.city }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

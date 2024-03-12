@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Provider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url("{% static 'white.jpg' %}");
+            background-size: cover;
+            font-family: 'Montserrat', sans-serif; /* Changed font to Montserrat */
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            color: #FFFFFF;
+        }
+        h1 {
+            color: #FF0000;
+            text-align: center;
+            padding: 40px 0;
+            margin: 0;
+            font-size: 36px;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #812;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .topnav a {
+            color: #FFFFFF;
+            text-align: center;
+            padding: 14px 20px; /* Increased padding */
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+            border-radius: 5px; /* Added border radius */
+            border: 1px solid transparent; /* Added border to create a button-like effect */
+        }
+        .topnav a:hover {
+            background-color: #6c3483;
+            color: #FFFFFF;
+            border-color: #FFFFFF; /* Change border color on hover */
+        }
+        .topnav a.active {
+            background-color: #6c3483;
+        }
+        .mainholder a {
+            color: #FF0000;
+            text-decoration: none;
+        }
+        .mainholder a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 class="style1">Hate Classify: A Service Framework for Hate Speech Identification on Social Media</h1>
+
+<div class="topnav">
+    <a href="{% url 'train_model' %}">View Trained and Tested Accuracy Results</a>
+    <a href="{% url 'likeschart' 'bar' %}">View Trained and Tested Accuracy in Bar Chart</a>
+    <a href="{% url 'charts1' 'line' %}">Performance Visualization: Trained and Tested Accuracy</a>
+    <a href="{% url 'View_Prediction_Of_TweetClassify_Type' %}">View Prediction Of Tweet Classify Type</a>
+    <a href="{% url 'View_TweetClassify_Type_Ratio' %}">View Tweet Classify Type Ratio</a>
+    <a href="{% url 'Download_Trained_DataSets' %}">Download Tweet Classify Predicted Data Sets</a>
+    <a href="{% url 'charts' 'line' %}">View Tweet Classify Type Ratio Results</a>
+    <a href="{% url 'View_Remote_Users' %}">View All Remote Users</a>
+    <a href="{% url 'login'  %}">Logout</a>
+</div>
+
+<div class="mainholder">
+    {% block researchblock %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            position: relative;
+            background: url("{% static 'white.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            -webkit-filter: blur(0px); /* Adjust the blur value as needed */
+            filter: blur(0px); /* Adjust the blur value as needed */
+        }
+        .container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.6); /* Adjusted alpha value for transparency */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            width: 95%; /* Adjusted the width as desired */
+            max-width: 900px; /* Increased maximum width */
+        }
+        h1 {
+            color: #FF0000;
+            text-align: center;
+            margin-top: 20px; /* Adjusted margin top */
+            font-weight: bold; /* Added font weight */
+            font-size: 40px; /* Adjusted font size */
+            margin-bottom: 30px; /* Adjusted margin bottom */
+        }
+        .style2 {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 20px; /* Adjusted font size */
+        }
+        .form-group {
+            margin-bottom: 30px; /* Increased margin bottom */
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px; /* Adjusted font size */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FF0000;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px; /* Adjusted font size */
+        }
+        input[type="submit"]:hover {
+            background-color: #CC0000;
+        }
+        .btn-lg {
+            display: block;
+            width: 100%;
+            padding: 15px; /* Increased padding for larger size */
+            text-align: center;
+            background-color:  #343a40; /* Black background color */
+            border:  #343a40; /* Darker border color */
+            border-radius: 5px;
+            color: rgb(24, 88, 250); /* Blue font color */
+            text-decoration: none;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-size: 20px; /* Increased font size */
+            margin-top: 20px; /* Added margin top */
+        }
+        .btn-lg:hover {
+            color: white; /* White font color on hover */
+            background-color: #1d2124; /* Darker background color on hover */
+        }
+        .form-container {
+            text-align: center;
+        }
+        .form-container img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px; /* Added border radius for the image */
+        }
+        hr {
+            border: 1px solid #FF0000;
+            margin-top: 30px; /* Adjusted margin top */
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Hate Classify: A Service Framework for Hate Speech Identification on Social Media</h1>
+    <div class="form-container">
+        <img src="{% static '/login.jpg' %}" alt="Login image">
+        <form method="POST" role="form">
+            {% csrf_token %}
+            <fieldset>
+                <p class="style2">Login Service Provider:</p>
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="User Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div>
+                    <input type="submit" name="submit1" class="btn btn-md" value="Login">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <hr>
+    <a href="{% url 'login' %}" class="btn-lg">USER LOGIN</a>
+</div>
+</body>
+</html>

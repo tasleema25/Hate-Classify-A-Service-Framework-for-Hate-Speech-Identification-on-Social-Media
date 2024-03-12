@@ -1,0 +1,103 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: #000000;
+        font-family: 'Montserrat', sans-serif; /* Changed font family to Montserrat */
+    }
+    .container-fluid {
+        padding: 50px;
+    }
+    .container {
+        background-color: white;
+        padding: 50px;
+        border-radius: 10px; /* Added rounded corners to the container */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added shadow effect */
+    }
+    #title {
+        font-family: 'Montserrat', sans-serif; /* Changed font family to Montserrat */
+        color: red; /* Changed title color */
+        text-align: center; /* Centered the title */
+        margin-bottom: 30px; /* Added margin bottom to the title */
+    }
+    .text-uppercase {
+        font-family: 'Montserrat', sans-serif; /* Changed font family to Montserrat */
+        text-transform: uppercase; /* Made text uppercase */
+    }
+    .tweettext {
+        border: 2px solid yellowgreen;
+        width: 100%; /* Made the tweet text box width 100% */
+        max-width: 1104px; /* Added max width */
+        height: 300px; /* Reduced height for better visibility */
+        overflow: auto; /* Added auto overflow */
+        background-color: #f9f9f9; /* Changed background color */
+        padding: 10px; /* Added padding */
+        margin-bottom: 20px; /* Added margin bottom */
+    }
+    .style1 {
+        color: #FF0000;
+        font-weight: bold;
+        font-size: 24px; /* Increased font size */
+    }
+    .style12 {
+        color: #FFFF00;
+        font-weight: bold;
+    }
+    /* Additional styling for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid #FF00FF;
+        padding: 10px; /* Increased padding */
+        text-align: center;
+    }
+    th {
+        background-color: #FF0000;
+        color: white;
+        font-size: 18px; /* Changed font size */
+    }
+    td {
+        background-color: #FFFFFF;
+        color: #333;
+        font-size: 16px; /* Changed font size */
+    }
+    /* Added hover effect for table rows */
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <h1 id="title" class="text-uppercase style1">View Tweet Classify Prediction Type Details</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <form role="form" method="POST">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div>
+                                <table>
+                                    <tr>
+                                        <th>Tweet Message</th>
+                                        <th>Tweet Classify Type</th>
+                                    </tr>
+                                    {% for object in list_objects %}
+                                    <tr>
+                                        <td>{{object.Tweet_Message}}</td>
+                                        <td>{{object.Prediction}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
